@@ -5,13 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
-import org.springframework.data.annotation.CreatedDate;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
-public class Freelancer {
+public class Freelancer extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +17,12 @@ public class Freelancer {
 
     private Long viewCount;
 
-    @CreatedDate
-    private LocalDateTime createdAt;
+    public Freelancer() {
+    }
+
+    public Freelancer(Long id, Long technicalAbility, Long viewCount) {
+        this.id = id;
+        this.technicalAbility = technicalAbility;
+        this.viewCount = viewCount;
+    }
 }

@@ -7,15 +7,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
-import org.springframework.data.annotation.CreatedDate;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
-public class FreelancerKeyword {
+public class FreelancerKeyword extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +24,11 @@ public class FreelancerKeyword {
     @JoinColumn(name = "keyword_id")
     private Keyword keyword;
 
-    @CreatedDate
-    private LocalDateTime createdAt;
+    public FreelancerKeyword() {
+    }
+
+    public FreelancerKeyword(Freelancer freelancer, Keyword keyword) {
+        this.freelancer = freelancer;
+        this.keyword = keyword;
+    }
 }

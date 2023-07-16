@@ -5,13 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
-import org.springframework.data.annotation.CreatedDate;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
-public class Keyword {
+public class Keyword extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +17,11 @@ public class Keyword {
 
     private Long searchCount;
 
-    @CreatedDate
-    private LocalDateTime createdAt;
+    public Keyword() {
+    }
+
+    public Keyword(String name, Long searchCount) {
+        this.name = name;
+        this.searchCount = searchCount;
+    }
 }
