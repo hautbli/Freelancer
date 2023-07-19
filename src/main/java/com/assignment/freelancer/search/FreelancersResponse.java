@@ -21,7 +21,6 @@ public class FreelancersResponse {
                 .map(freelancer ->
                         new FreelancerResponse(
                                 freelancer.getId(),
-                                freelancer.getTechnicalAbility(),
                                 freelancer.getViewCount(),
                                 freelancer.getCreatedAt()))
                 .collect(Collectors.toList());

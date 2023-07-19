@@ -13,16 +13,12 @@ public class Freelancer extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long technicalAbility;
-
     private Long viewCount;
 
     public Freelancer() {
     }
-
-    public Freelancer(Long id, Long technicalAbility, Long viewCount) {
+    public Freelancer(Long id, Long viewCount) {
         this.id = id;
-        this.technicalAbility = technicalAbility;
         this.viewCount = viewCount;
     }
 }

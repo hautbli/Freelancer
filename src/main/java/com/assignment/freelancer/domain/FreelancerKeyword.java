@@ -24,11 +24,14 @@ public class FreelancerKeyword extends BaseEntity {
     @JoinColumn(name = "keyword_id")
     private Keyword keyword;
 
+    private int abilityLevel;
+
     public FreelancerKeyword() {
     }
 
-    public FreelancerKeyword(Freelancer freelancer, Keyword keyword) {
+    public FreelancerKeyword(Freelancer freelancer, Keyword keyword, int abilityLevel) {
         this.freelancer = freelancer;
         this.keyword = keyword;
+        this.abilityLevel = abilityLevel;
     }
 }

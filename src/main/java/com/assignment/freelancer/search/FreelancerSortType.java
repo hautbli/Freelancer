@@ -3,9 +3,9 @@ package com.assignment.freelancer.search;
 import lombok.Getter;
 
 public enum FreelancerSortType {
-    TECHNICAL_ABILITY("technical_ability"),
+    ABILITY_LEVEL("abilityLevel"),
     VIEW_COUNT("viewCount"),
-    LATEST_AT("createdAt");
+    LATEST("createdAt");
 
     @Getter
     private final String sortType;
