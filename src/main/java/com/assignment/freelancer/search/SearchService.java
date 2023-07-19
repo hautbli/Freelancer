@@ -23,17 +23,17 @@ public class SearchService {
     }
 
     public FreelancersResponse search(String keyword, FreelancerSortType sortType, int page) {
-        // 1. keyword 로 keyword list 를 가져온다.
+        PageRequest pageable = PageRequest.of(page, 3, Sort.by(sortType.getSortType()).descending());
         List<Long> keywordIds = keywordRepository.findAllLike(keyword);
 
-        // 2. keyword list 를 갖고 있는 프리랜서 리스트를 가져온다.
-        List<Long> freelancerIds = freelancerKeywordRepository.findAllByKeywordIdIn(keywordIds);
+        // 기술역량 기준 정렬
+        if (sortType.equals(FreelancerSortType.ABILITY_LEVEL)) {
+            List<Freelancer> freelancers = freelancerKeywordRepository.searchFreelancers(keywordIds, pageable);
+            return FreelancersResponse.of(freelancers);
+        }
+        List<Freelancer> freelancers = freelancerRepository.searchFreelancers(keywordIds, pageable);
 
-        // 3. pagination 을 적용하여 리턴한다.
-        PageRequest pageable = PageRequest.of(page, 3, Sort.by(sortType.getSortType()).descending());
-        List<Freelancer> freelancers = freelancerRepository.findAllIdIn(freelancerIds, pageable);
-
-        // 4. 응답 dto로 변환하여 리턴한다.
+        // todo 키워드 응답 추가
         return FreelancersResponse.of(freelancers);
     }
 }
