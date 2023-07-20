@@ -24,4 +24,11 @@ public class SearchApiController {
 
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping("/hot")
+    public ResponseEntity<KeywordsResponse> getHotKeywords() {
+        KeywordsResponse result = searchService.getHotKeywords();
+
+        return ResponseEntity.ok(result);
+    }
 }
