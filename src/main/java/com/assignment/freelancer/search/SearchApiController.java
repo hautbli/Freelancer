@@ -1,5 +1,7 @@
 package com.assignment.freelancer.search;
 
+import com.assignment.freelancer.search.dto.FreelancersResponse;
+import com.assignment.freelancer.search.dto.HotKeywordsResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +28,8 @@ public class SearchApiController {
     }
 
     @GetMapping("/hot")
-    public ResponseEntity<KeywordsResponse> getHotKeywords() {
-        KeywordsResponse result = searchService.getHotKeywords();
+    public ResponseEntity<HotKeywordsResponse> getHotKeywords() {
+        HotKeywordsResponse result = searchService.getHotKeywords();
 
         return ResponseEntity.ok(result);
     }
