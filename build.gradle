@@ -26,6 +26,9 @@ dependencies {
 
 	// lombok
 	implementation 'org.projectlombok:lombok'
+
+	// api docs
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
 }
 
 tasks.named('test') {

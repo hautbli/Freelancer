@@ -6,14 +6,19 @@ import com.assignment.freelancer.domain.FreelancerKeywordRepository;
 import com.assignment.freelancer.domain.FreelancerRepository;
 import com.assignment.freelancer.domain.Keyword;
 import com.assignment.freelancer.domain.KeywordRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Random;
 
 @RestController
+@RequestMapping("/dummy")
+@Tag(name = "Search", description = "검색 API Document")
 public class DummyController {
     private final FreelancerRepository freelancerRepository;
     private final KeywordRepository keywordRepository;
@@ -26,7 +31,8 @@ public class DummyController {
     }
 
 
-    @PostMapping("/dummy")
+    @PostMapping
+    @Operation(summary = "더미데이터 생성 API", description = "프리랜서 10개, 각 프리랜서당 2개의 키워드를 갖는 데이터를 생성합니다")
     @Transactional
     public void createDummy() {
         List<Freelancer> freelancers = List.of(
@@ -57,7 +63,7 @@ public class DummyController {
         Random random = new Random();
         for (int i = 0; i < keywords.size(); i++) {
             Keyword savedKeyword = keywordRepository.save(keywords.get(i));
-            freelancerKeywordRepository.save(new FreelancerKeyword(freelancers.get(i / 2), savedKeyword,  random.nextInt(100)));
+            freelancerKeywordRepository.save(new FreelancerKeyword(freelancers.get(i / 2), savedKeyword, random.nextInt(100)));
         }
     }
 }
