@@ -18,8 +18,9 @@ public class SearchApiController {
     @GetMapping
     public ResponseEntity<FreelancersResponse> searchFreelancers(@RequestParam("keyword") String keyword,
                                                                  @RequestParam("sort") FreelancerSortType sortType,
-                                                                 @RequestParam("page") int page) {
-        FreelancersResponse result = searchService.search(keyword, sortType, page);
+                                                                 @RequestParam("page") int page,
+                                                                 @RequestParam("size") int size) {
+        FreelancersResponse result = searchService.search(keyword, sortType, page, size);
 
         return ResponseEntity.ok(result);
     }
