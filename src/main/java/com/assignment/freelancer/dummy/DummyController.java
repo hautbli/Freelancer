@@ -50,9 +50,8 @@ public class DummyController {
                 new Keyword("7", 560L)
         );
 
-
         for (Freelancer freelancer : freelancers) {
-            Freelancer savedFreelancer = freelancerRepository.save(freelancer);
+            freelancerRepository.save(freelancer);
         }
 
         Random random = new Random();

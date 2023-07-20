@@ -15,5 +15,7 @@ public interface KeywordRepository extends JpaRepository<Keyword, Long> {
     @Query("update Keyword k set k.searchCount = k.searchCount +1 where k.id in (:keywordIds)")
     void increaseSearchCount(@Param("keywordIds") List<Long> keywordIds);
 
-    List<Keyword> findAllByOrderBySearchCountDesc();
+    List<Keyword> findTop10ByOrderBySearchCountDesc();
+
+    List<Keyword> findByNameStartsWith(String keyword);
 }

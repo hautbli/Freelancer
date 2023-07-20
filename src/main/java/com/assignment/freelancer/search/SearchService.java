@@ -52,7 +52,7 @@ public class SearchService {
     }
 
     public HotKeywordsResponse getHotKeywords() {
-        List<Keyword> keywords = keywordRepository.findAllByOrderBySearchCountDesc();
+        List<Keyword> keywords = keywordRepository.findTop10ByOrderBySearchCountDesc();
 
         return HotKeywordsResponse.of(keywords);
     }
